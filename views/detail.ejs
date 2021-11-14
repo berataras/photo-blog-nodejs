@@ -11,13 +11,18 @@
 			<div class="mx-auto tm-content-container">
 				<main>
 					<div class="tm-video-description-box text-center">
-						<h2 class="mb-5 tm-video-title">Mauris dapibus urna nec ipsum posuere</h2>
+						<img src="<%= '/uploads/' + photo.image %>" class="mb-5" alt="<%= photo.title %>">
+						<h2 class="mb-5 tm-video-title"><%= photo.title %></h2>
 						<p class="mb-4">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-							Aut ea, illo laudantium officiis quae tempora temporibus! Cum illo incidunt
-							inventore iusto nemo optio quisquam sit! Adipisci laudantium
-							natus praesentium quisquam.
+							<%= photo.description %>
 						</p>
+						<br>
+						<a href="<%= '/edit/' + photo._id %>" class="btn btn-success">
+							Edit Post
+						</a>
+						<a href="" class="btn btn-danger">
+							Delete Post
+						</a>
 					</div>
 				</main>
 
