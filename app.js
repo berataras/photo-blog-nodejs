@@ -1,20 +1,33 @@
+const mongoose = require('mongoose');
 const express = require('express')
-const path = require("path");
+const ejs = require('ejs')
+const Photo = require('./models/Photo')
+
+//connect DB
+mongoose.connect('mongodb://localhost/pcat-test-db', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 const app = express();
-
-app.use(express.static('public'));
 const port = 3000;
+
 app.listen(port, () => {
     console.log(`server started at ${port} port`);
 })
+
+//middleware
+app.use(express.static('public'));
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 
 //template engine
 app.set('view engine', 'ejs');
 
 //routes
-app.get('/', (request, response) => {
-    response.render('index')
+app.get('/', async (request, response) => {
+    const photos = await Photo.find({})
+    response.render('index', {photos})
 })
 
 app.get('/about', (request, response) => {
@@ -23,4 +36,13 @@ app.get('/about', (request, response) => {
 
 app.get('/add', (request, response) => {
     response.render('add')
+})
+
+app.get('/detail', (request, response) => {
+    response.render('detail')
+})
+
+app.post('/photos', async (request, response) => {
+    await Photo.create(request.body);
+    response.redirect('add')
 })

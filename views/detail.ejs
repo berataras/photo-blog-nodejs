@@ -1,0 +1,46 @@
+<%- include('partials/_head') -%>
+<body>
+	<div class="tm-page-wrap mx-auto">
+		<div class="position-relative">
+			<%- include('partials/_nav') -%>
+			<div class="tm-welcome-container tm-fixed-header tm-fixed-header-1"></div>
+            <div id="tm-fixed-header-bg"></div> 
+		</div>
+
+		<div class="container-fluid">
+			<div class="mx-auto tm-content-container">
+				<main>
+					<div class="tm-video-description-box text-center">
+						<h2 class="mb-5 tm-video-title">Mauris dapibus urna nec ipsum posuere</h2>
+						<p class="mb-4">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+							Aut ea, illo laudantium officiis quae tempora temporibus! Cum illo incidunt
+							inventore iusto nemo optio quisquam sit! Adipisci laudantium
+							natus praesentium quisquam.
+						</p>
+					</div>
+				</main>
+
+				<%- include('partials/_footer') -%>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+    	$(document).ready(function() {
+    		$('.tm-likes-box').click(function(e) {
+    			e.preventDefault();
+    			$(this).toggleClass('tm-liked');
+
+    			if($(this).hasClass('tm-liked')) {
+    				$('#tm-likes-count').html('486 likes');
+    			} else {
+    				$('#tm-likes-count').html('485 likes');
+    			}
+    		});
+    	});
+    </script>
+</body>
+</html>
